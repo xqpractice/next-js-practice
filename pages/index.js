@@ -1,35 +1,42 @@
 import Link from 'next/link';
+import Markdown from 'react-markdown';
 import fetch from 'isomorphic-unfetch';
 import HomeLayout from '../components/HomeLayout';
 
 const Index = (props) => (
   <HomeLayout>
-    <h1>Batman TV Shows</h1>
-    <ul>
-      {props.shows.map(({show}) => (
-        <li key={show.id}>
-          <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
-            <a>{show.name}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
-    <style jsx>{`
-      li {
-        list-style: none;
-        margin: 5px 0;
-      }
+    <h1>{props.url.query.title}</h1>
+   <div className="markdown">
+     <Markdown source={`
+This is our blog post.
+Yes. We can have a [link](/link).
+And we can have a title as well.
 
-      a {
-        text-decoration: none;
-        color: blue;
-        font-family: "Arial";
-      }
+### This is a title
 
-      a:hover {
-        opacity: 0.6;
-      }
-    `}</style>
+And here's the content.
+     `}/>
+   </div>
+   <style jsx global>{`
+     .markdown {
+       font-family: 'Arial';
+     }
+
+     .markdown a {
+       text-decoration: none;
+       color: blue;
+     }
+
+     .markdown a:hover {
+       opacity: 0.6;
+     }
+
+     .markdown h3 {
+       margin: 0;
+       padding: 0;
+       text-transform: uppercase;
+     }
+  `}</style>
   </HomeLayout>
 );
 

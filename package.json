@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
+    "start": "next start",
+    "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +25,7 @@
     "isomorphic-unfetch": "^1.0.0",
     "next": "^2.4.5",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-markdown": "^2.5.0"
   }
 }
